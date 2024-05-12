@@ -39,10 +39,14 @@ export default class Tile {
     }
 
     waitForTransition(animation = false) {
-        return new Promise(resovle => {
-            this.#tileElement.addEventListener(
-                animation ? "animation" : "transitionend", 
-                resovle, { once: true })
+        return new Promise(resolve => {
+          this.#tileElement.addEventListener(
+            animation ? "animationend" : "transitionend",
+            resolve,
+            {
+              once: true,
+            }
+          )
         })
-    }
+      }
 }
