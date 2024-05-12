@@ -37,4 +37,12 @@ export default class Tile {
     remove() {
         this.#tileElement.remove()
     }
+
+    waitForTransition(animation = false) {
+        return new Promise(resovle => {
+            this.#tileElement.addEventListener(
+                animation ? "animation" : "transitionend", 
+                resovle, { once: true })
+        })
+    }
 }
